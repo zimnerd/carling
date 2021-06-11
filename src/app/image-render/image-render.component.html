@@ -1,0 +1,18 @@
+<ion-content>
+  <div style="margin-top:200px" *ngIf="delay===false">
+    <ion-progress-bar type="indeterminate" ></ion-progress-bar>
+  </div>
+  <ion-row *ngIf="canRender === true">
+    <ion-col>
+      <cl-image [public-id]="background">
+        <cl-transformation effect="bgremoval" [attr.overlay]="overlay">
+        </cl-transformation>
+      </cl-image>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer>
+  <ion-img src="../../assets/img/footer.png"></ion-img>
+</ion-footer>

@@ -11,7 +11,7 @@
 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
-@import '~swiper/swiper-bundle';
+
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
@@ -52,9 +52,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: .8 !important;
   margin-bottom: 0 !important
 }
-body{
-  font-size:3rem !important
-}
+
 ion-content {
   --ion-background-color: transparent !important;
   background-image: url("../src/assets/img/bg.jpg") !important;
@@ -64,29 +62,7 @@ ion-content {
   --ion-background-size: cover;
   --ion-background-position: center;
 }
-ion-icon{
-  width: 100px !important;
-  height: 100px !important;
-}
-ion-button,button{
-  height: 120px !important;
-  font-size: 3rem !important;
-}
-ion-label{
-  font-size:3rem !important
-}
-.alert-radio-group{
-  max-height:70% !important
-}
-.alert-head,.alert-message{
-  min-height: 50px;
-}
-.slide{
-  width: 100% !important;
-}
-.swiper-slide img{
-  width: 80% !important;
-}
+
 .bd-medium {
   background-color: rgba(0, 0, 0, .7) !important;
 }
@@ -125,15 +101,7 @@ ion-checkbox::part(container) {
 }
 
 .register ion-item {
-  margin-bottom: 20px;
-}
-
-[aria-checked=true].alert-radio-icon .alert-radio-inner {
-  left: -10px !important;
-  top: 0 !important;
-  width: 24px !important;
-  height: 20px !important;
-  border-width: 5px !important;
+  margin-bottom: 5px;
 }
 
 .w-100 {
@@ -143,10 +111,7 @@ ion-checkbox::part(container) {
 ion-slides {
 
 }
-ion-footer{
-  position: absolute !important;
-  bottom:0 !important
-}
+
 .slide ion-button {
   bottom: 30px;
   position: absolute;
@@ -164,22 +129,4 @@ ion-footer{
 
 .pt-80 {
   padding-top: 80px;
-}
-input, ion-select,.alert-radio-label,.loading-content{
-  font-size: 3rem !important;
-}
-
-
-.select-alert{
-  --min-width: 600px !important;
-  --max-height: 90%;
-  font-size:3rem !important;
-}
-
-ion-checkbox{
-  --size:3rem !important
-}
-
-.loading-wrapper ,.ion-overlay-wrapper{
-  min-width: 600px !important
 }

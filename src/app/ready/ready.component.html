@@ -1,0 +1,56 @@
+<ion-content style="background-image: none !important">
+  <div style="position: relative;">
+    <div style="position: absolute; top: 580px;">
+      <webcam [height]="screenHeight" [width]="screenWidth" [trigger]="triggerObservable"
+              (imageCapture)="handleImage($event)"
+              *ngIf="showWebcam"
+              [videoOptions]="videoOptions"
+              [imageQuality]="1"
+              (initError)="handleInitError($event)"
+      ></webcam>
+    </div>
+    <div style="top: 180px;">
+      <ion-row>
+        <div style="position: relative; width:100%">
+          <div style="position: absolute;width:100%">
+            <ion-col size="12">
+              <img [src]="bg">
+            </ion-col>
+          </div>
+          <div style="width: 100%;position:absolute; top:220px">
+            <ion-col *ngIf="count >= 5">
+              <h1 class="ion-text-center" style="margin-top: 0 !important;">
+                <ion-text color="light">ARE YOU</ion-text>
+              </h1>
+              <h1 class="ion-text-center" style="margin-top: 0 !important;">
+                <ion-text color="danger">YOU READY</ion-text>
+              </h1>
+              <h3 class="ion-text-center" style="margin-top: 0 !important;">
+                <ion-text color="light">STAND WITHIN MARKED AREA</ion-text>
+              </h3>
+            </ion-col>
+            <ion-col *ngIf="count < 5">
+              <h1 class="ion-text-center" style="margin-top: 0 !important;">
+                <ion-text color="light">PHOTO IN</ion-text>
+              </h1>
+              <h1 class="ion-text-center bold-text" style="margin-top: 20px !important; font-weight: bolder; font-size:10rem !important">
+                <ion-text color="danger">{{count}}</ion-text>
+              </h1>
+            </ion-col>
+          </div>
+        </div>
+      </ion-row>
+      <ion-grid style="top:1360px; position: absolute; width: 100%;">
+        <ion-row>
+          <ion-col size="3"></ion-col>
+          <ion-col>
+            <ion-button color="danger" size="large" (click)="countDown()" expand="full">NEXT
+              <ion-icon slot="end" size="large" name="chevron-forward-outline" color="light"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
