@@ -5,6 +5,8 @@
               (imageCapture)="handleImage($event)"
               *ngIf="showWebcam"
               [videoOptions]="videoOptions"
+              mirrorImage="always"
+              [allowCameraSwitch]="false"
               [imageQuality]="1"
               (initError)="handleInitError($event)"
       ></webcam>

@@ -9,3 +9,10 @@ h2{
 h3{
   font-size:2rem;
 }
+.ng-valid[required], .ng-valid.required  {
+  border-bottom: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-bottom: 5px solid #a94442; /* red */
+}

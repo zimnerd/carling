@@ -18,21 +18,22 @@
     </ion-col>
   </ion-row>
   <div class="ion-padding-horizontal bd-medium ion-margin">
-    <ion-list class="register">
+    <form #regForm="ngForm" (ngSubmit)="onSubmit()" >
+    <ion-list class="register  form-group">
       <ion-item color="light">
-        <ion-input type="text" placeholder="YOUR NAME*"></ion-input>
+        <ion-input type="text" placeholder="YOUR NAME*" [(ngModel)]="name" name="name"  required></ion-input>
       </ion-item>
       <ion-item color="light">
-        <ion-input type="text" placeholder="YOUR SURNAME*"></ion-input>
+        <ion-input type="text" placeholder="YOUR SURNAME*"  [(ngModel)]="surname" name="surname"  required></ion-input>
       </ion-item>
       <ion-item color="light">
-        <ion-input type="text" placeholder="YOUR EMAIL ADDRESS*"></ion-input>
+        <ion-input type="email" placeholder="YOUR EMAIL ADDRESS*"  [(ngModel)]="email" name="email"  required></ion-input>
       </ion-item>
       <ion-item color="light">
-        <ion-input type="text" placeholder="YOUR PHONE NUMBER*"></ion-input>
+        <ion-input type="tel" placeholder="YOUR PHONE NUMBER*"  [(ngModel)]="number" name="number"  required></ion-input>
       </ion-item>
       <ion-item color="light">
-        <ion-select placeholder="SELECT YOUR REGION*" class="w-100">
+        <ion-select placeholder="SELECT YOUR REGION*" class="w-100"  [(ngModel)]="region" name="region"  required>
           <ion-select-option value="Gauteng">GAUTENG</ion-select-option>
           <ion-select-option value="Eastern Cape">EASTERN CAPE</ion-select-option>
           <ion-select-option value="Free State">FREE STATE</ion-select-option>
@@ -45,11 +46,11 @@
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label color="light" class="ion-no-margin ion-margin-horizontal">I AGREE TO THE TERMS AND CONDITIONS*</ion-label>
-        <ion-checkbox color="light" slot="start" class="ion-no-margin"></ion-checkbox>
+        <ion-label color="light" class="ion-no-margin ion-margin-horizontal"  >I AGREE TO THE TERMS AND CONDITIONS*</ion-label>
+        <ion-checkbox color="light" slot="start" class="ion-no-margin"  [(ngModel)]="terms" name="terms" required></ion-checkbox>
       </ion-item>
       <ion-item>
-        <ion-checkbox color="light" slot="start" class="ion-no-margin"></ion-checkbox>
+        <ion-checkbox color="light" slot="start" class="ion-no-margin" [(ngModel)]="hear" name="hear"></ion-checkbox>
         <ion-label color="light" class="ion-no-margin ion-margin-horizontal">I WANT TO HEAR FROM CARLING BLACK LABEL</ion-label>
       </ion-item>
     </ion-list>
@@ -61,16 +62,17 @@
     <ion-row>
       <ion-col size="3"></ion-col>
       <ion-col>
-        <ion-button color="danger" expand="full" [routerLink]="['/select']">NEXT
+        <ion-button type="submit" color="danger" expand="full" [disabled]="!regForm.form.valid">NEXT
           <ion-icon slot="end" name="chevron-forward-outline" color="light"></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col size="3"></ion-col>
     </ion-row>
+    </form>
   </div>
   <ion-row style="position:absolute; bottom:195px">
     <ion-col>
-      <img src="assets/img/footer.png" width="100%">
+      <img src="assets/img/footer.png" width="100%" alt="">
     </ion-col>
   </ion-row>
 

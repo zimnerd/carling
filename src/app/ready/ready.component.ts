@@ -33,7 +33,7 @@ export class ReadyComponent implements OnInit {
   deviceId = '';
   public videoOptions: MediaTrackConstraints = {
     width: {ideal: 1020},
-    height: {ideal: 1920}
+    height: {ideal: 1920},
   };
   public errors: WebcamInitError[] = [];
 
@@ -45,7 +45,7 @@ export class ReadyComponent implements OnInit {
   // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
   ready = false;
-  count: number = 5
+  count: number = 6
 
   constructor(public platform: Platform,
               public router: Router, private http: HttpClient,

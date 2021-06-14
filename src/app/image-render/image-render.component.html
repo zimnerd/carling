@@ -1,7 +1,4 @@
-<ion-content>
-  <div style="margin-top:200px" *ngIf="delay===false">
-    <ion-progress-bar type="indeterminate" ></ion-progress-bar>
-  </div>
+<ion-content style="background-image: none">
   <ion-row *ngIf="canRender === true">
     <ion-col>
       <cl-image [public-id]="background">
@@ -10,9 +7,26 @@
       </cl-image>
     </ion-col>
   </ion-row>
-
+  <div style="position:relative;    bottom: 600px;">
+    <div style="position:absolute">
+      <img src="assets/img/base.png" width="100%" height="600px">
+    </div>
+    <div style="padding-top:150px">
+      <ion-row>
+        <ion-col>
+          <h1 class="ion-text-center">
+            <ion-text color="light">CHAMPION COACH</ion-text>
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h1 class="ion-text-center">
+            <ion-text color="danger">{{fullname}}</ion-text>
+          </h1>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>
 
-<ion-footer>
-  <ion-img src="assets/img/footer.png"></ion-img>
-</ion-footer>

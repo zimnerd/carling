@@ -11,7 +11,7 @@ export class SelectPlayersComponent implements OnInit {
   @ViewChild('playersSlider') playersSlider?: IonSlides;
   team: any;
   curentTeam: string[] = [];
-  selectedPlayers:string[] = [];
+  selectedPlayers: string[] = [];
   remaining = 4;
   set: any;
 
@@ -35,9 +35,11 @@ export class SelectPlayersComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.team = params.get('team');
+      localStorage.setItem("team_name","Orlando Pirates");
       this.curentTeam = this.players.orlando;
       if (this.team === 'amakhosi') {
         this.curentTeam = this.players.amakhosi
+        localStorage.setItem("team_name","Kaizer Chiefs")
       }
       console.log(this.team);
       console.log(this.curentTeam);
@@ -46,21 +48,22 @@ export class SelectPlayersComponent implements OnInit {
   }
 
   togglePlayer(id: any) {
-    console.log("CLICKED",id);
+    console.log("CLICKED", id);
     if (this.selectedPlayers.indexOf(id) === -1 && this.remaining > 0) {
       this.selectedPlayers.push(id);
     } else {
       const index = this.selectedPlayers.indexOf(id);
-      console.log("REMOVE",index);
+      console.log("REMOVE", index);
       if (index > -1) {
         this.selectedPlayers.splice(index, 1);
       }
     }
     this.selectedPlayers.sort();
-    console.log("SELCTED",this.selectedPlayers);
+    console.log("SELCTED", this.selectedPlayers);
     this.remaining = 4 - this.selectedPlayers.length;
     if (this.remaining === 0) {
       this.set = this.selectedPlayers.join('');
+      localStorage.setItem("team_group", this.set)
       console.log(this.set);
     }
   }
