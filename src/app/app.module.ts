@@ -35,9 +35,10 @@ import { ImageRenderComponent } from './image-render/image-render.component';
     BrowserAnimationsModule,
     MatSliderModule, HttpClientModule,
     IonicModule.forRoot(), CloudinaryModule.forRoot({Cloudinary}, {
-      cloud_name: 'dnit13rfq',
-      upload_preset: 'irkqakmz',
-      final_preset: 'cps9viou',
+      cloud_name: 'foneworx',
+      upload_preset: 'nobgremoval',
+      final_preset: 'bgremoval',
+      bgremoval: 'nxccf4bn',
     } as CloudinaryConfiguration), FormsModule
   ],
   providers: [],

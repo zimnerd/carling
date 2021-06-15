@@ -56,7 +56,7 @@ export class ReadyComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.bgImage = params.get('set');
-      this.bg = 'https://res.cloudinary.com/dnit13rfq/image/upload/' + this.bgImage + '_BG.png'
+      this.bg = `https://res.cloudinary.com/${this.cloudinary.config().cloud_name}/image/upload/${this.bgImage}_BG.png`
       console.log(this.bgImage);
     });
     WebcamUtil.getAvailableVideoInputs()
@@ -98,7 +98,7 @@ export class ReadyComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', imageBlob, this.imageName + '.png');
     formData.append('public_id', this.imageName);
-    formData.append('upload_preset', this.cloudinary.config().upload_preset);
+    formData.append('upload_preset', this.cloudinary.config().bgremoval);
     formData.append('tags[]', 'person');
     this.uploadImageData(formData).then(r => {
       console.log(r);
