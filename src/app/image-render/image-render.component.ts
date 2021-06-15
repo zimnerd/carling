@@ -55,7 +55,7 @@ export class ImageRenderComponent implements OnInit {
           // @ts-ignore
           this.user.team_group = localStorage.getItem('team_group');
           // @ts-ignore
-          this.imageName = this.user.first_name.replace(/\s+/g, '-') + '-' + this.user.team_group+'-'+new Date().valueOf().toString();
+          this.imageName = this.user.first_name.replace(/\s+/g, '-') + '-' + this.user.team_group + '-' + new Date().valueOf().toString();
         }
 
         console.log(this.user)
@@ -65,7 +65,7 @@ export class ImageRenderComponent implements OnInit {
     setTimeout(() => {
       this.delay = true;
       this.uploadImageData();
-    }, 8000);
+    }, 10000);
   }
 
   async presentLoading() {
@@ -114,19 +114,17 @@ export class ImageRenderComponent implements OnInit {
       message: 'Please wait...',
     });
     // @ts-ignore
-    this.user.img_url  = secure_url;
-    setTimeout(async () => {
-      await loading.present();
-      this.http.post('https://cblapp.foneworx.co.za/submit_picture/', this.user)
-        .pipe(
-          finalize(() => {
-            loading.dismiss();
-          })
-        )
-        .subscribe((res: any) => {
-          console.log(res)
-        });
-    }, 5000);
+    this.user.img_url = secure_url;
+    await loading.present();
+    this.http.post('https://cblapp.foneworx.co.za/submit_picture/', this.user)
+      .pipe(
+        finalize(() => {
+          loading.dismiss();
+        })
+      )
+      .subscribe((res: any) => {
+        console.log(res)
+      });
   }
 
 
