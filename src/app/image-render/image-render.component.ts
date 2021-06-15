@@ -49,7 +49,7 @@ export class ImageRenderComponent implements OnInit {
         this.user = JSON.parse(localUser)
         this.fullname = this.user?.first_name + ' ' + this.user?.last_name
         // @ts-ignore
-        this.user.img_url = "https://res.cloudinary.com/dnit13rfq/image/upload/e_multiply,l_" + this.overlay + "/" + this.background + ""
+        //this.user.img_url = "https://res.cloudinary.com/dnit13rfq/image/upload/e_multiply,l_" + this.overlay + "/" + this.background + ""
         if (typeof localStorage.getItem('team_name') === "string") {
           // @ts-ignore
           this.user.team_name = localStorage.getItem('team_name');

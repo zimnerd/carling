@@ -118,15 +118,18 @@ export class ReadyComponent implements OnInit {
     this.http.post(`https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`, formData)
       .pipe(
         finalize(() => {
-          loading.dismiss();
+
         })
       )
       .subscribe((res: any) => {
         if (res.created_at !== undefined) {
           this.renderTransformed = true;
           this.overlay = res.public_id;
-          this.ref.detectChanges();
-          this.router.navigate([`/image-render/${this.bgImage}/${this.overlay}`]);
+          setTimeout(() => {
+            this.ref.detectChanges();
+            loading.dismiss();
+            this.router.navigate([`/image-render/${this.bgImage}/${this.overlay}`]);
+          }, 20000)
         } else {
         }
       });
