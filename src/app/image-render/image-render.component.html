@@ -1,4 +1,4 @@
-<ion-content #container id="my-node" style="background-image: none" >
+<ion-content #container id="my-node" style="background-image: none">
   <ion-row *ngIf="canRender === true">
     <ion-col>
       <cl-image [public-id]="background">
@@ -30,7 +30,7 @@
   </div>
 </ion-content>
 <ion-footer>
-  <ion-button color="danger" size="large" (click)="goHome()" expand="full">START OVER
+  <ion-button color="danger" size="large" (click)="goHome()" expand="full" *ngIf="canGoHome === true">START OVER
     <ion-icon slot="start" size="large" name="chevron-back-outline" color="light"></ion-icon>
   </ion-button>
 </ion-footer>

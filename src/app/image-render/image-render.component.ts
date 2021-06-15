@@ -26,6 +26,7 @@ export class ImageRenderComponent implements OnInit {
   } | undefined;
   fullname = '';
   imageName = '';
+  canGoHome = false;
 
   constructor(private route: ActivatedRoute, public router: Router, private cloudinary: Cloudinary, private http: HttpClient, private loadingController: LoadingController) {
   }
@@ -79,6 +80,7 @@ export class ImageRenderComponent implements OnInit {
 
 
   async uploadImageData() {
+    this.canGoHome = false;
     // @ts-ignore
     domtoimage.toBlob(document.getElementById('my-node'))
       .then(async (imageBlob: any) => {
@@ -124,6 +126,7 @@ export class ImageRenderComponent implements OnInit {
       )
       .subscribe((res: any) => {
         console.log(res)
+        this.canGoHome = true;
       });
   }
 
