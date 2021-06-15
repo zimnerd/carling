@@ -56,7 +56,7 @@ export class ImageRenderComponent implements OnInit {
           // @ts-ignore
           this.user.team_group = localStorage.getItem('team_group');
           // @ts-ignore
-          this.imageName = this.user?.first_name + '' + this.user.team_group;
+          this.imageName = this.user.first_name.replace(/\s+/g, '-') + '-' + this.user.team_group+'-'+new Date().valueOf().toString();
         }
 
         console.log(this.user)
