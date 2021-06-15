@@ -12,8 +12,8 @@ export class RegisterComponent implements OnInit {
   region: string | undefined;
   number: number | undefined;
   email: string | undefined;
-  terms: boolean | undefined;
-  hear: boolean | undefined;
+  terms = false;
+  hear=false;
 
 
 
