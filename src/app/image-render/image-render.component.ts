@@ -3,7 +3,6 @@ import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {finalize} from "rxjs/operators";
 import {LoadingController} from "@ionic/angular";
-// @ts-ignore
 import domtoimage from 'dom-to-image';
 import {Cloudinary} from "@cloudinary/angular-5.x";
 
