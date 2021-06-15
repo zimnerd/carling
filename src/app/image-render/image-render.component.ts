@@ -33,7 +33,6 @@ export class ImageRenderComponent implements OnInit {
   ngOnInit(): void {
 
     this.presentLoading().then(_ => {
-      this.uploadImageData();
     });
     this.route.paramMap.subscribe(params => {
       this.background = params.get('background')!;
@@ -65,7 +64,8 @@ export class ImageRenderComponent implements OnInit {
     });
     setTimeout(() => {
       this.delay = true;
-    }, 5000);
+      this.uploadImageData();
+    }, 8000);
   }
 
   async presentLoading() {
