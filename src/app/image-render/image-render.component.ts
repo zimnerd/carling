@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {finalize} from "rxjs/operators";
 import {LoadingController} from "@ionic/angular";
@@ -27,7 +27,7 @@ export class ImageRenderComponent implements OnInit {
   fullname = '';
   imageName = '';
 
-  constructor(private route: ActivatedRoute, private cloudinary: Cloudinary, private http: HttpClient, private loadingController: LoadingController) {
+  constructor(private route: ActivatedRoute, public router: Router, private cloudinary: Cloudinary, private http: HttpClient, private loadingController: LoadingController) {
   }
 
   ngOnInit(): void {
@@ -128,4 +128,7 @@ export class ImageRenderComponent implements OnInit {
   }
 
 
+  goHome() {
+    this.router.navigate(['/home'])
+  }
 }
