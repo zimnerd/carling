@@ -36,7 +36,8 @@ import { ImageRenderComponent } from './image-render/image-render.component';
     MatSliderModule, HttpClientModule,
     IonicModule.forRoot(), CloudinaryModule.forRoot({Cloudinary}, {
       cloud_name: 'dnit13rfq',
-      upload_preset: 'irkqakmz'
+      upload_preset: 'irkqakmz',
+      final_preset: 'cps9viou',
     } as CloudinaryConfiguration), FormsModule
   ],
   providers: [],

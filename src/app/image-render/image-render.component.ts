@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {finalize} from "rxjs/operators";
 import {LoadingController} from "@ionic/angular";
+// @ts-ignore
+import domtoimage from 'dom-to-image';
+import {Cloudinary} from "@cloudinary/angular-5.x";
 
 @Component({
   selector: 'app-image-render',
@@ -10,6 +13,7 @@ import {LoadingController} from "@ionic/angular";
   styleUrls: ['./image-render.component.scss']
 })
 export class ImageRenderComponent implements OnInit {
+  @ViewChild('container') container: any;
   background: string = '';
   overlay: string | null | undefined;
   delay = false;
@@ -22,14 +26,15 @@ export class ImageRenderComponent implements OnInit {
     team_group: '',
   } | undefined;
   fullname = '';
+  imageName = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private loadingController: LoadingController) {
+  constructor(private route: ActivatedRoute, private cloudinary: Cloudinary, private http: HttpClient, private loadingController: LoadingController) {
   }
 
   ngOnInit(): void {
 
     this.presentLoading().then(_ => {
-      this.upload();
+      this.uploadImageData();
     });
     this.route.paramMap.subscribe(params => {
       this.background = params.get('background')!;
@@ -51,6 +56,8 @@ export class ImageRenderComponent implements OnInit {
           this.user.team_name = localStorage.getItem('team_name');
           // @ts-ignore
           this.user.team_group = localStorage.getItem('team_group');
+          // @ts-ignore
+          this.imageName = this.user?.first_name + '' + this.user.team_group;
         }
 
         console.log(this.user)
@@ -59,7 +66,6 @@ export class ImageRenderComponent implements OnInit {
     });
     setTimeout(() => {
       this.delay = true;
-      this.upload();
     }, 5000);
   }
 
@@ -72,10 +78,44 @@ export class ImageRenderComponent implements OnInit {
     await loading.present();
   }
 
-  async upload() {
+
+  async uploadImageData() {
+    // @ts-ignore
+    domtoimage.toBlob(document.getElementById('my-node'))
+      .then(async (imageBlob: any) => {
+        console.log(imageBlob)
+        const formData = new FormData();
+        formData.append('file', imageBlob, this.imageName + '.png');
+        formData.append('public_id', this.imageName);
+        formData.append('upload_preset', this.cloudinary.config().final_preset);
+        formData.append('tags[]', 'people');
+        this.overlay = null;
+        const loading = await this.loadingController.create({
+          message: 'Please wait...',
+        });
+        this.http.post(`https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`, formData)
+          .pipe(
+            finalize(() => {
+              loading.dismiss();
+            })
+          )
+          .subscribe((res: any) => {
+            if (res.created_at !== undefined) {
+              this.upload(res.secure_url)
+            } else {
+            }
+          });
+      })
+
+  }
+
+
+  async upload(secure_url: any) {
     const loading = await this.loadingController.create({
       message: 'Please wait...',
     });
+    // @ts-ignore
+    this.user.img_url  = secure_url;
     setTimeout(async () => {
       await loading.present();
       this.http.post('https://cblapp.foneworx.co.za/submit_picture/', this.user)
